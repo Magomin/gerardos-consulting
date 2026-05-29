@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerardo's Consulting — Conseil en stratégie & opérations</title>
+  <meta name="description" content="Cabinet de conseil indépendant : stratégie, performance opérationnelle et transformation pour PME et scale-ups." />
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --card: #131822;
+      --text: #eef2f7;
+      --muted: #97a1b0;
+      --accent: #2f7df6;
+      --accent2: #14b8a6;
+      --border: #1e2633;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      background: var(--bg); color: var(--text); line-height: 1.65;
+    }
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body, .nav, .btn, .badge, .stat-num, .nav-links { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    h1, h2, h3 { font-family: "Georgia", "Times New Roman", serif; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    header {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px);
+      background: rgba(11,14,20,0.75); border-bottom: 1px solid var(--border);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .logo { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 30px; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.93rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn {
+      display: inline-block; padding: 12px 24px; border-radius: 8px;
+      background: var(--accent); color: #fff; text-decoration: none;
+      font-weight: 600; font-size: 0.93rem; border: none; cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s, background 0.2s;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(47,125,246,0.35); }
+    .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--accent); box-shadow: none; }
+    .hero { padding: 120px 0 90px; }
+    .hero-inner { max-width: 760px; }
+    .badge {
+      display: inline-block; padding: 6px 14px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--card);
+      color: var(--accent2); font-size: 0.82rem; margin-bottom: 26px; font-weight: 600;
+    }
+    .hero h1 { font-size: clamp(2.3rem, 5.5vw, 3.8rem); line-height: 1.12; letter-spacing: -0.02em; margin-bottom: 24px; }
+    .hero p { font-size: 1.2rem; color: var(--muted); margin-bottom: 36px; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 72px; }
+    .stat { border-left: 2px solid var(--accent); padding-left: 18px; }
+    .stat-num { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; }
+    .stat-label { color: var(--muted); font-size: 0.92rem; }
+    .section { padding: 90px 0; }
+    .section-head { max-width: 620px; margin-bottom: 56px; }
+    .eyebrow { color: var(--accent2); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); letter-spacing: -0.02em; margin-bottom: 14px; }
+    .section-head p { color: var(--muted); font-size: 1.05rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 32px; transition: transform 0.2s, border-color 0.2s; }
+    .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .card .num { color: var(--accent); font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; }
+    .card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: 0.96rem; }
+    .approach { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .step { padding-top: 20px; border-top: 2px solid var(--border); }
+    .step .n { color: var(--accent); font-weight: 800; font-size: 1.4rem; }
+    .step h4 { margin: 8px 0; font-size: 1.05rem; }
+    .step p { color: var(--muted); font-size: 0.92rem; }
+    .quote { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 48px; max-width: 820px; margin: 0 auto; text-align: center; }
+    .quote p { font-size: 1.35rem; line-height: 1.5; margin-bottom: 24px; }
+    .quote .who { color: var(--muted); font-size: 0.95rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .cta { text-align: center; background: linear-gradient(135deg, rgba(47,125,246,0.12), rgba(20,184,166,0.12)); border: 1px solid var(--border); border-radius: 24px; padding: 70px 32px; }
+    .cta h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); margin-bottom: 16px; letter-spacing: -0.02em; }
+    .cta p { color: var(--muted); margin-bottom: 32px; font-size: 1.05rem; }
+    footer { border-top: 1px solid var(--border); padding: 44px 0; color: var(--muted); font-size: 0.9rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .grid-3, .approach, .stats { grid-template-columns: 1fr; }
+      .hero { padding: 80px 0 50px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Gerardo's<span> Consulting</span></div>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approche">Approche</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="#contact" class="btn">Prendre rendez-vous</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="badge">Conseil indépendant · PME & scale-ups</span>
+        <h1>Transformer la stratégie en résultats concrets.</h1>
+        <p>Gerardo's Consulting accompagne les dirigeants sur leurs décisions critiques : croissance, performance opérationnelle et transformation. Des recommandations claires, applicables, et un accompagnement jusqu'à l'exécution.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn">Discuter de votre projet</a>
+          <a href="#services" class="btn btn-ghost">Voir les services</a>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num">[ XX ]</div>
+            <div class="stat-label">missions livrées <em>(à compléter)</em></div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">[ XX ]</div>
+            <div class="stat-label">années d'expérience <em>(à compléter)</em></div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">[ XX% ]</div>
+            <div class="stat-label">clients qui renouvellent <em>(à compléter)</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Nos services</div>
+          <h2>Trois domaines d'intervention</h2>
+          <p>Un cadrage rigoureux, puis un accompagnement opérationnel adapté à votre contexte et à vos contraintes.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="num">01</div>
+            <h3>Stratégie & croissance</h3>
+            <p>Diagnostic du modèle économique, priorisation des leviers de croissance, business plan et feuille de route à 12–36 mois. Pour clarifier où aller et comment y arriver.</p>
+          </div>
+          <div class="card">
+            <div class="num">02</div>
+            <h3>Performance opérationnelle</h3>
+            <p>Analyse des processus, identification des inefficacités, optimisation des coûts et des marges. Mise en place d'indicateurs de pilotage simples et actionnables.</p>
+          </div>
+          <div class="card">
+            <div class="num">03</div>
+            <h3>Transformation & organisation</h3>
+            <p>Conduite du changement, structuration des équipes, déploiement d'outils et de méthodes. Pour que la transformation tienne dans la durée, au-delà de la mission.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approche">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Notre approche</div>
+          <h2>Une méthode en quatre temps</h2>
+          <p>Pragmatique, collaborative, orientée résultats. Pas de slides pour les slides.</p>
+        </div>
+        <div class="approach">
+          <div class="step">
+            <div class="n">1</div>
+            <h4>Écouter</h4>
+            <p>Comprendre votre contexte, vos enjeux et vos objectifs réels avant de proposer quoi que ce soit.</p>
+          </div>
+          <div class="step">
+            <div class="n">2</div>
+            <h4>Diagnostiquer</h4>
+            <p>Analyser les données et le terrain pour identifier les vrais points de friction et les opportunités.</p>
+          </div>
+          <div class="step">
+            <div class="n">3</div>
+            <h4>Recommander</h4>
+            <p>Proposer un plan d'action priorisé, chiffré et réaliste, validé avec vous.</p>
+          </div>
+          <div class="step">
+            <div class="n">4</div>
+            <h4>Exécuter</h4>
+            <p>Accompagner la mise en œuvre aux côtés de vos équipes jusqu'aux premiers résultats.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="apropos">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">À propos</div>
+          <h2>Gerardo's Consulting</h2>
+        </div>
+        <div style="max-width:760px; color:var(--muted); font-size:1.08rem;">
+          <p style="margin-bottom:18px;">Cabinet de conseil indépendant fondé pour aider les dirigeants de PME et de scale-ups à prendre de meilleures décisions, plus vite. Nous combinons rigueur analytique et sens du concret : chaque recommandation est pensée pour être appliquée.</p>
+          <p>[ Remplacez ce paragraphe par votre parcours réel : expériences, secteurs de prédilection, ce qui vous distingue. La crédibilité d'un cabinet vient de faits vérifiables — privilégiez le vrai. ]</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="quote">
+          <p>« [ Insérez ici un vrai témoignage client une fois une mission réalisée. Un retour authentique vaut dix promesses. ] »</p>
+          <div class="who">— Nom du client, Fonction, Entreprise</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="cta">
+          <h2>Parlons de votre projet</h2>
+          <p>Un premier échange gratuit de 30 minutes pour cadrer votre besoin.</p>
+          <a href="mailto:contact@gerardos-consulting.com" class="btn">contact@gerardos-consulting.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Gerardo's Consulting. Tous droits réservés.</div>
+      <div>Conseil en stratégie & opérations</div>
+    </div>
+  </footer>
+</body>
+</html>
